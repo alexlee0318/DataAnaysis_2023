@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+<body style="margin: 40px;">
+    <!-- 06.template.py파일에서 name값을 줬으므로 html에서도 name을 이용한 조건문 등등 사용 가능 -->
+    {% if name %}
+        <h1>Hello {{name | upper()}}!!!</h1>
+        <!-- http://localhost:5000/hello/alex ->> 'Hello alex!!!' -->
+    {% else %}
+        <h1>Hello World!!!</h1>
+    {% endif %}
+    <br>
+
+    <!-- 반복문 가능. py파일 먼저 작성 후 -->
+    <ul>
+    {% for key, value in dt.items() %}
+        <li>{{key}} : {{value}}</li>     
+    {% endfor %}
+    </ul>
+    <h3>파이썬: dt['key1'] - -> Flask: dt.key1</h3>
+    <h3>{{dt.key1}}</h3>
+    {% for i in range(5) %}
+        <h4>{{ i }}</h4>
+    {% endfor %}
+    <h3>{{ item | default('py파일에서 item 값이 지정되지 않으면 대신 나오는 문구')}}</h3>
+</body>
+</html>

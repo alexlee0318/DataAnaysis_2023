@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static resource</title>
+    <!-- <script src="../static/js/05.hello.js"></script> -->
+    <script src="{{url_for('static', filename='js/05.hello.js')}}"></script>
+</head>
+<body style="margin: 40px;">
+    <input type="button" value="Say Hello" onclick="sayHello()">
+    <br><br>
+    <img src="{{url_for('static', filename='img/비숑숑.jpg', q=mtime)}}" height="400">
+    <!-- url_for() 함수: 파일위치 주면 찾아와줌 -->
+    <!-- 다른 이미지를 비숑숑으로 지정(바꿔치기) 하면 q값이 바뀜(웹p 소스에서 확인 가능) -->
+</body>
+</html>
