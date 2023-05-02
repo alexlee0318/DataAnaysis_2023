@@ -6,6 +6,7 @@ app = Flask(__name__)
 def index():
     return 'Hello Flask'
 
+# localhost:5000/calc
 @app.route('/calc', methods=['GET','POST'])
 def calc():
     if request.method == 'GET':
