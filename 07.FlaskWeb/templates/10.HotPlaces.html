@@ -5,28 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수원 Hot Places</title>
-
     <style>
         input {margin: 3px;}
     </style>
 </head>
-
 <body style="margin: 40px;">
     <h1>수원 Hot Places</h1>
     <hr>
-
-    <!-- HTML -->
     <form action="/hotPlaces" method="post">
         <input type="text" name="place1">
         <input type="text" name="place2">
         <input type="text" name="place3">
         <input type="submit" value="제출">
     </form>
-
-    <!-- HTML_res -->
-    <iframe src="{{url_for('static', filename='img/hotPlaces.html')}}" frameborder="1" width="800" height="500">
-    </iframe>
-    <button onclick="location.href='/hotPlaces'">재실행</button>
-
 </body>
 </html>

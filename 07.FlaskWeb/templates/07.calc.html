@@ -10,11 +10,13 @@
     <h3>계산기</h3>
     <hr>
     <!-- 폼 만들기 -->
-    <form action="/clac", method='POST'>
+    <form action="/calc", method='POST'>
         <input type="number" name="num1">
         <select name="op">
-            {% for op in op_list%}
-                <option value="{{ op }}">{{ op }}</option>
+            <!-- selected위치 지정: loop.first / loop.last / loop.index == 3 등등 값 바꿔서 지정-->
+            {% for op in op_list %}
+                <option value="{{ op }}" {% if loop.index == 3 %}selected{% endif %}>{{ op }}</option>
+                <!-- <option value="{{ op }}">{{ op }}</option> -->
             {% endfor %}
         </select>
         <input type="number" name="num2">

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>산점도</title>
-    <style>
-        td {text-align: center;}
-    </style>
-</head>
-<body style="margin: 40px;">
+{% extends "13.bootstrap.html" %}
+{% block title %}Carousel{% endblock %}
+{% block subtitle %}부트스트랩 캐러젤 {% endblock %}    
+{% block content %}
     <h1>산점도</h1>
     <hr>
     <form action="/scatter" method="post">
@@ -39,5 +31,5 @@
             </tr>
         </table>
     </form>
-</body>
-</html>
+{% endblock %}  
+    
