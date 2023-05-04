@@ -25,7 +25,7 @@ def scatter():
 @app.route('/hotPlaces', methods=['GET','POST'])
 def hot_places():
     if request.method == 'GET':
-        return render_template('homework/hot_places.html')
+        return render_template('homework/HotPlaces.html')
     else:
         # client가 입력한 장소 알아내기
         place1 = request.form['place1']
@@ -33,16 +33,16 @@ def hot_places():
         place3 = request.form['place3']
         places = [place1, place2, place3]
         mu.hot_places(places, app)
-        return render_template('homework/hot_places_res.html')
+        return render_template('homework/HotPlaces_res.html')
 
 @app.route('/interpark')
 def interpark():
     book_list = cu.interpark()
-    return render_template('homework/interpark.html', book_list=book_list)
+    return render_template('homework/Interpark.html', book_list=book_list)
 
 @app.route('/progress')
 def progress():
-    return render_template('homework/progress_bar.html')
+    return render_template('homework/ProgressBar.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

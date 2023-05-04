@@ -8,7 +8,7 @@ def index():
     return 'Hello Flask'
 
 @app.route('/hotPlaces', methods=['GET','POST'])
-def hello():
+def hot_places():
     if request.method == 'GET':
         return render_template('10.HotPlaces.html')
     else:

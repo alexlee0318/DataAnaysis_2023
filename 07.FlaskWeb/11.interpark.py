@@ -14,7 +14,7 @@ def index():
 
 @app.route('/interpark', methods=['GET'])
 def interpark():
-    book_list = cu.interpark()
+    book_list = cu.interpark()  # rendering parameter
     return render_template('11.interpark.html', book_list=book_list)
 
     
