@@ -38,7 +38,7 @@ def hot_places():
 @app.route('/interpark')
 def interpark():
     book_list = cu.interpark()
-    return render_template('homework/Interpark.html', book_list=book_list)
+    return render_template('homework/interpark.html', book_list=book_list)
 
 @app.route('/progress')
 def progress():
