@@ -61,14 +61,14 @@
         <span class="navbar-text me-3">{% block weather %}{% endblock %}</span>
       </div>
     </nav>
-
+    <!-- 프로파일 이미지 부분 -->
     <div class="container" style="margin-top: 80px">
       <div class="row">
         <div class="col-3">
           	<a href="javascript:changeProfile()">
-				<img id="profile" src="{{url_for('static', filename='data/profile.png')}}" class="rounded-circle" width="90%">
+				      <img id="profile" src="{{url_for('static', filename='data/profile.png')}}" class="rounded-circle" width="90%">
 		  		<!-- <img src="https://picsum.photos/256/256" class="rounded-circle" width="90%"> -->
-			</a>
+			      </a>
 			<div id="imageInput" class="mt-2 d-none">
 				<input type="file" id="image" class="form-control form-control-sm">
 				<a href="javascript:imageSubmit()">
@@ -85,12 +85,14 @@
             <img src="{{url_for('static', filename='img/facebook.png')}}"  height="16" class="me-2"/><a href="#">alex_facebook</a><br />
 			<a href="#" onclick="changeAddr(); return false;">
             	<img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">
+              <!-- 한번 더 클릭하면 addr창 사라지도록 하는 방법은? -->
+              <!-- <a href="#" onclick="if(window.event.onclick ==1) {changeAddr()} else ; return false;"> -->
 			</a>
 				<span id = "addr">{{ addr }}</span>
 				<a href="javascript:changeWeather()"><span class="badge bg-secondary">날씨</span></a>
 			<div id="addrInput" class="mt-2 d-none">
 				<input type="text" id="addrInputTag" class="form-control form-control-sm"
-						onkeyup="if(window.event.keyCode==13) {addrSubmit()}">
+						onkeyup="if(window.event.keyCode==13) {addrSubmit()}"> <!-- Ent쳐서 submit하겠다 -->
 				<a href="javascript:addrSubmit()">
 						<span class="badge bg-primary">확인</span>
 				</a>

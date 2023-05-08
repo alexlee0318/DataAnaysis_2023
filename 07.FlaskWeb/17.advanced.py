@@ -27,7 +27,7 @@ with app.app_context():
      quote = random.sample(quotes, 1)[0]
      addr = '수원시 장안구'"""
 
-################ for AJAX##################
+################ for AJAX ##################
 @app.route('/change_quote')
 def change_quote():
     global quote
