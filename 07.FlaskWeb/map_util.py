@@ -44,3 +44,24 @@ def hot_places(places, app):
         ).add_to(map)
     filename = os.path.join(app.static_folder, 'img/hotPlaces.html')
     map.save(filename)
+
+# 17.advanced.py 연동
+def get_coord(addr):
+    with open('../04.지도시각화/data/roadapikey.txt') as f: # 위 도로명주소에서 긁어오기
+        road_key = f.read()
+    base_url= 'https://www.juso.go.kr/addrlink/addrLinkApiJsonp.do'
+    params1 = f'confmKey={road_key}&currentPage=1&countPerPage=10&resultType=json'
+    url = f'{base_url}?{params1}&keyword={quote(addr)}' # addr로 바꿈
+    result = requests.get(url)
+    res = json.loads(result.text[1:-1])
+    road_addr = res['results']['juso'][0]['roadAddr']
+
+    with open('../04.지도시각화/data/kakaoapikey.txt') as f:
+        kakao_key = f.read()
+    base_url = 'https://dapi.kakao.com/v2/local/search/address.json'
+    header = {'Authorization': f'KakaoAK {kakao_key}'}
+    url = f'{base_url}?query={quote(road_addr)}'    # quote(road_addr)로 바꿈
+    result = requests.get(url, headers=header).json()
+    lat = float(result['documents'][0]['y'])
+    lng = float(result['documents'][0]['x'])
+    return lat, lng
