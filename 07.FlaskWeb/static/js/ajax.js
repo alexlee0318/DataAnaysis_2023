@@ -11,10 +11,19 @@ function changeQuote() {
         }
     });
 }
+
+let flig = false;
 function changeAddr() {
-        $('#addrInput').attr('class', 'mt-2')	// input box가 보이게
+    if (!flig) {
+        $('#addrInput').attr('class', 'mt-2'); 
+        flig = !flig;
+    } else {
+        $('#addrInput').attr('class', 'mt-2 d-none');
+        flig = !flig;
+    }
 }
 function addrSubmit() {
+        // $('#addrInputTag').attr('type', 'text d-none');
         $('#addrInput').attr('class', 'mt-2 d-none');	// input box가 안보이게
         let addr = $('#addrInputTag').val();	// input 값
         $.ajax({
@@ -23,6 +32,7 @@ function addrSubmit() {
             data: {addr: addr},		// addr로 읽어라 : addr(위에서 변수 선언한 addr)
             success: function(msg) {
                 $('#addr').html(msg);
+                addr = !addr;
             }
         });
 }
@@ -38,9 +48,16 @@ function changeWeather() {
     });
 }
 
+let flag = false;   // flag: 임의의 변수. 함수 바깥에 전역변수로 설정
 function changeProfile() {
-    $('#imageInput').attr('class', 'mt-2');
-  }
+    if (!flag) {
+        $('#imageInput').attr('class', 'mt-2'); 
+        flag = !flag;
+    } else {
+        $('#imageInput').attr('class', 'mt-2 d-none');
+        flag = !flag;
+    }
+}
   function imageSubmit() {
     let imageInputVal = $('#image')[0];
     let formData = new FormData();

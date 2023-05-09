@@ -40,10 +40,7 @@ def interpark():
 
 def genie():
     url = "https://www.genie.co.kr/chart/top200"
-    result = requests.get(url)
-    header = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-    }
+    header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"}
     result = requests.get(url, headers=header)
     soup = BeautifulSoup(result.text, "html.parser")
     trs = soup.select("tr.list")

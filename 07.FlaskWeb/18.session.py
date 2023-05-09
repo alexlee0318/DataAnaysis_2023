@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'qwert12345'
 app.config['SESSION_COOKIE_PATH'] = '/'
 
-app.register_blueprint(user_bp, url_prefix='/user') # /user로 들어오는 것은 모두 user_bp로 보냄
+app.register_blueprint(user_bp, url_prefix='/user') # /user로 들어오는 것을 user_bp로 보냄
 
 
 # flask 2.3 에서는 이 코드만 사용 가능
@@ -78,14 +78,12 @@ def home():
 #     menu = {"ho": 1, "us": 1, "cr": 0, "sc": 0}
 #     return redirect('/schedule')        # '사용자'를 누르면 스케줄로 이동/ "GET /user HTTP/1.1" 302 -
 
-
 @app.route("/interpark")
 def interpark():
     menu = {"ho": 0, "us": 0, "cr": 1, "sc": 0}
     book_list = cu.interpark()
     return render_template("prototype/interpark.html", book_list=book_list, menu=menu,
                             weather=get_weather(app), quote=quote, addr=addr)
-
 
 @app.route("/genie")
 def genie():
@@ -100,7 +98,6 @@ def genie_jquery():
     song_list = cu.genie()
     return render_template("prototype/genie_jquery.html", song_list=song_list, menu=menu, weather=get_weather(app), 
         quote=quote, addr=addr)
-
 
 @app.route("/siksin", methods=["GET", "POST"])
 def siksin():
@@ -125,13 +122,7 @@ def schedule():
         
     menu = {"ho": 0, "us": 0, "cr": 0, "sc": 1}
     return render_template("prototype/schedule.html", menu=menu, weather=get_weather(app), 
-                           quote=quote)
-
-
-@app.route("/youtube")
-def youtube():
-    return "준비중 입니다!"
-
+                           quote=quote, addr=addr)
 
 if __name__ == "__main__":
     app.run(debug=True)

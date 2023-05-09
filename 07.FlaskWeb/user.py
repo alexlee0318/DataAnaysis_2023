@@ -26,7 +26,7 @@ def login():
                 flash('비밀번호가 틀립니다.')   # 로그인 화면을 다시 보내줌
                 return redirect('/user/login')
         except:
-            flash('등록되지 않은 ID입니다.')   # 회원가입 페이지로 안내
+            flash('등록되지 않은 ID입니다. 회원가입페이지로 이동합니다.')
             return redirect('/user/register')
         
 @user_bp.route('/logout')
