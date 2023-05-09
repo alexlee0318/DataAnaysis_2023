@@ -83,22 +83,23 @@ def home():
 def interpark():
     menu = {"ho": 0, "us": 0, "cr": 1, "sc": 0}
     book_list = cu.interpark()
-    return render_template(
-        "prototype/interpark.html",
-        book_list=book_list,
-        menu=menu,
-        weather=get_weather(app), quote=quote, addr=addr
-    )
+    return render_template("prototype/interpark.html", book_list=book_list, menu=menu,
+                            weather=get_weather(app), quote=quote, addr=addr)
 
 
 @app.route("/genie")
 def genie():
     menu = {"ho": 0, "us": 0, "cr": 1, "sc": 0}
     song_list = cu.genie()
-    return render_template(
-        "prototype/genie.html", song_list=song_list, menu=menu, weather=get_weather(app), 
-        quote=quote, addr=addr
-    )
+    return render_template("prototype/genie.html", song_list=song_list, menu=menu, weather=get_weather(app), 
+        quote=quote, addr=addr)
+
+@app.route("/genie_jquery")
+def genie_jquery():
+    menu = {"ho": 0, "us": 0, "cr": 1, "sc": 0}
+    song_list = cu.genie()
+    return render_template("prototype/genie_jquery.html", song_list=song_list, menu=menu, weather=get_weather(app), 
+        quote=quote, addr=addr)
 
 
 @app.route("/siksin", methods=["GET", "POST"])
