@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,8 +17,8 @@
     </style>
     <script src="{{url_for('static', filename='js/ajax.js')}}"></script>
     {% block additional_head %}{% endblock %}
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-sm bg-warning navbar-warning fixed-top">
       <div class="container-fluid">
         <ul class="navbar-nav">
@@ -52,21 +52,12 @@
             <a class="nav-link {% if menu.sc %}active{% endif %}" href="{% if menu.sc %}#{% else %}/schedule{% endif %}"><i class="fa-solid fa-calendar-days"></i> 스케쥴</a>
           </li>
           <li class="nav-item ms-3">
-           {% if session['uid'] %}
-              <a class="nav-link" href="/user/logout"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
-           {% else %}
-              <a class="nav-link" href="/user/login"><i class="fas fa-sign-out-alt"></i> 로그인</a>
-           {% endif %}
+            <a class="nav-link" href="#"
+              ><i class="fas fa-sign-out-alt"></i> 로그아웃</a
+            >
           </li>
         </ul>
-        <span class="navbar-text me-3">
-          <!-- 로그인하면 날씨->로그인문구로 바뀌는 조건문 -->
-            {% if session['uid'] %}
-                {{ session['uid'] }}님 환영합니다.
-            {% else %}
-                {% block weather %}{% endblock %}
-            {% endif %}
-        </span>
+        <span class="navbar-text me-3">{% block weather %}{% endblock %}</span>
       </div>
     </nav>
     <!-- 프로파일 이미지 부분 -->
@@ -77,7 +68,6 @@
 				      <img id="profile" src="{{url_for('static', filename='data/profile.png')}}" class="rounded-circle" width="90%">
 		  		<!-- <img src="https://picsum.photos/256/256" class="rounded-circle" width="90%"> -->
 			      </a>
-            
 			<div id="imageInput" class="mt-2 d-none">
 				<input type="file" id="image" class="form-control form-control-sm">
 				<a href="javascript:imageSubmit()">
@@ -85,7 +75,7 @@
 				</a>
 			</div>
           <div class="mt-2">
-            <span id="quoteMsg">{{ session['quote'] }}</span>
+            <span id="quoteMsg">{{ quote }}</span>
             <a href="javascript:changeQuote()"><span class="badge bg-secondary">수정</span></a>
           </div>
           <div class="mt-5">
@@ -95,8 +85,9 @@
 			<a href="#" onclick="changeAddr(); return false;">
             	<img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">
               <!-- 한번 더 클릭하면 addr창 사라지도록 하는 방법은? -->
+              <!-- <a href="#" onclick="if(window.event.onclick ==1) {changeAddr()} else ; return false;"> -->
 			</a>
-				<span id = "addr">{{ session['addr'] }}</span>
+				<span id = "addr">{{ addr }}</span>
 				<a href="javascript:changeWeather()"><span class="badge bg-secondary">날씨</span></a>
 			<div id="addrInput" class="mt-2 d-none">
 				<input type="text" id="addrInputTag" class="form-control form-control-sm"
@@ -124,14 +115,6 @@
         </span>
       </div>
     </nav>
-    <!-- login.html 하단에서 가져옴(flash기능 추가) -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <script>
-            alert("{{ messages[-1] }}")
-        </script>
-        {% endif %}
-    {% endwith %}
     {% block additional_body %}{% endblock %}
-</body>
+  </body>
 </html>
