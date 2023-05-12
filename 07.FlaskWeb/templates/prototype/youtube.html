@@ -1,0 +1,32 @@
+{% block title %}Youtube{% endblock %}
+{% block additional_head %} 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<style>
+    th  {text-align: center;}
+</style>
+{% endblock %}
+{% block content %}
+<h3>Youtube</h3>
+<table class="table">
+    <tr>
+        <th style="width: 8%;">순위</th>
+        <th style="width: 15%;">카테고리</th>
+        <th style="width: 30%;">채널명</th>
+        <th style="width: 10%;">구독자수</th>
+        <th style="width: 15%;">조회수</th>
+        <th style="width: 10%;">비디오</th>
+    </tr>
+    {% for youtube in youtube_list %}
+    <tr>
+        <td style="text-align: center;">{{youtube.순위}}</td>
+        <td style="text-align: center;">{{youtube.카테고리}}</td>
+        <td style="text-align: center;">{{youtube.채널명}}</a></td>
+        <td style="text-align: center;">{{youtube.구독자수}}</td>
+        <td style="text-align: center;">{{youtube.조회수}}</td>
+        <td style="text-align: center;">{{youtube.비디오}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
