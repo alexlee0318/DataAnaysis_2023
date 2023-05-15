@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유튜브랭킹 TOP1000</title>
+</head>
+<body style="">
+    <h3>유튭랭킹 Top1000</h3>
+    <hr>
+    <img src="{{url_for('static', filename='please-wait.gif')}}">
+    <form style="display:none;" action="/youtube_ranking" method="post" id="form">
+        <input type="hidden" id="dummy" value="">
+    </form>
+    <script>
+        window.onload = function() {
+            let form = document.getElementById('form');
+            form.submit();
+        }
+    </script>
+</body>
+</html>
